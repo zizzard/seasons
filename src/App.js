@@ -26,7 +26,6 @@ function App() {
     fetch("https://zizzard-music.herokuapp.com/holiday")
       .then(
         (response) => {
-          console.log(response);
           return response.json();
         },
         (error) => {
@@ -36,7 +35,6 @@ function App() {
       .then((data) => {
         if (data["success"]) {
           setData(data["payload"]);
-          console.log(data["payload"]);
           setLoaded(true);
         } else {
           setDataFailure(true);
@@ -66,7 +64,6 @@ function App() {
   }
 
   function updateCurrentSong(song) {
-    console.log(song);
     if (audioUI != null) audioUI.pause();
 
     setDownloading(true);
@@ -104,13 +101,14 @@ function App() {
       setCurrentlyPlaying(false);
     }
 
-    let song_index = currentSong["date"] - 1;
-    if (-1 === song_index) {
+    let current_song_index = currentSong["date"] - 1;
+    let prev_song_index = current_song_index - 1;
+    if (-1 === prev_song_index) {
       clearSong();
       return;
     }
 
-    updateCurrentSong(data[song_index]);
+    updateCurrentSong(data[prev_song_index]);
   }
 
   function next() {
@@ -119,13 +117,14 @@ function App() {
       setCurrentlyPlaying(false);
     }
 
-    let song_index = currentSong["date"] + 1;
-    if (data.length === song_index) {
+    let current_song_index = currentSong["date"] - 1;
+    let next_song_index = current_song_index + 1;
+    if (data.length === next_song_index) {
       clearSong();
       return;
     }
 
-    updateCurrentSong(data[song_index]);
+    updateCurrentSong(data[next_song_index]);
   }
 
   function clearSong() {
@@ -157,7 +156,7 @@ function App() {
                 className="home-btn nes-btn wide margin-bottom"
                 onClick={() => setEntry(true)}
               >
-                <div className="nes-btn-text">Live Listen</div>
+                <div className="nes-btn-text">Listen Live</div>
               </div>
               <div
                 className="home-btn nes-btn wide"

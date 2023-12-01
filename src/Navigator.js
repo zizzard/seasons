@@ -3,8 +3,6 @@ import React from "react";
 import Song from "./Song";
 
 function Navigator({ loaded, updateCurrentSong, data, dataFailure }) {
-  console.log(data);
-
   return (
     <div className="navigator nes-container">
       {!loaded ? (

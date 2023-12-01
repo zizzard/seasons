@@ -211,7 +211,7 @@ body {
   align-items: center;
 
   width: 90%;
-  line-height: 1.05;
+  line-height: 1.25;
 }
 
 .wide {
@@ -223,7 +223,6 @@ body {
   color: #797c5a;
   z-index: 5;
   min-width: 100px;
-  max-width: 85%;
 }
 
 .artist-title:hover , .album-title:hover , .song-title:hover {
@@ -339,6 +338,11 @@ body {
   text-shadow: #ced1aa 2px 2px;
   color: #797c5a;
   line-height: 1.1;
+}
+
+.spotify-anchor{
+  text-decoration: none;
+  color: rgb(54 54 30);
 }
 
 @media only screen and (max-width: 900px) {
