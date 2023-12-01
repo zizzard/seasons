@@ -1,25 +1,35 @@
-import React from 'react';
+import React from "react";
 
-import Artist from './Aritst';
+import Song from "./Song";
 
 function Navigator({ loaded, updateCurrentSong, data, dataFailure }) {
+  console.log(data);
 
   return (
     <div className="navigator nes-container">
-      {!loaded ? 
+      {!loaded ? (
         <div className="loading-center">
           <div className="loading-text">
-            {dataFailure ? "Failed to load library, please try again..." : "Downloading music library..."}
+            {dataFailure
+              ? "Failed to load library, please try again..."
+              : "Downloading music library..."}
           </div>
-        </div> : 
-        <div className="artists">
-          {
-              data.map((artist, index) => {
-                  return(<Artist key={ artist.artist + "-" + index } artist={artist} updateCurrentSong={updateCurrentSong} />)
-              })
-          }
         </div>
-        }
+      ) : (
+        <div className="artists">
+          {data.map((song) => {
+            return (
+              <Song
+                key={song.date}
+                song={song}
+                song_title={song.title}
+                song_date={song.date}
+                updateCurrentSong={updateCurrentSong}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
