@@ -290,6 +290,11 @@ body {
 
 }
 
+.song-title {
+  padding-left: 5.04em;
+  text-indent: -5.04em;
+}
+
 .marquee{
   padding: 0px 20px;
 }
